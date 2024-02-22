@@ -4,16 +4,28 @@ function GameInputForm() {
 
 const [textInput, setTextInput] = React.useState("");
 
-  return <div>
-    <form class="guess-input-wrapper">
-      <label for="guess-input">Enter guess:</label>
-      <input id="guess-input" type="text" minLength="5" value={textInput} onChange={(event) => {
-        setTextInput(event.target.value.toUpperCase());
-        console.log(event.target.value.toUpperCase());
+  function handleSubmit(event){
+    event.preventDefault();
+
+    // if(textInput.length !==5){
+    //   window.alert('Please enter exctaly 5 letters :)')
+    // }
+
+    console.log({ textInput });
+    setTextInput('');
+  }
+
+
+  return (
+    <form onSubmit={handleSubmit} className="guess-input-wrapper">
+      <label htmlFor="guess-input">Enter guess:</label>
+      <input required minLength={5} maxLength={5} id="guess-input" type="text" pattern="[a-zA-Z]{5}" value={textInput} onChange={(event) => {
+        const nextGuess = event.target.value.toUpperCase(); 
+        setTextInput(nextGuess);
         }} 
       />
     </form>
-  </div>;
+  ) 
 }
 
 export default GameInputForm;
