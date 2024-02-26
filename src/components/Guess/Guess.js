@@ -5,7 +5,6 @@ import { checkGuess } from '../../game-helpers';
 
 function Cell({ letter, status }){
   const className = status ? `cell ${status}` : 'cell';
-
   return(
     <span className={className}>{letter}</span>
   )
@@ -22,6 +21,7 @@ const result = checkGuess(value, answer);
           letter={result ? result[num].letter : undefined}
           status={result ? result[num].status : undefined}
         />
+        
       ))}       
     </p>
     ) 
