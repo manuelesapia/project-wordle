@@ -8,7 +8,7 @@ import {NUM_OF_GUESSES_ALLOWED} from '../../constants';
 
 import WonBanner from '../WonBanner';
 import LostBanner from '../LostBanner';
-
+import GameOverBanner from '../GameOverBanner/GameOverBanner';
 
 // Pick a random word on every pageload.
 const answer = sample(WORDS);
@@ -31,17 +31,21 @@ function Game() {
     }
   }
 
+
   return(
   <>
     {gameStatus}
-    <PreviousGuesses guesses={guesses} answer={answer}/>
-    <GameInputForm gameStatus={gameStatus} handleSubmitGuesses={handleSubmitGuesses}/>
+      <PreviousGuesses guesses={guesses} answer={answer}/>
+      <GameInputForm gameStatus={gameStatus} handleSubmitGuesses={handleSubmitGuesses}/>
     {gameStatus === 'won' && (
       <WonBanner numOfGuesses={guesses.length} />
     )}
     {gameStatus === 'lost' && (
       <LostBanner answer={answer} />
     )}
+
+    <GameOverBanner/>
+  
   </>
   )
 }
