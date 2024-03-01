@@ -36,8 +36,6 @@ function Game() {
     setAnswer(newAnswer);
     setGuesses([]);
     setGameStatus("Running");
-    console.info({ newAnswer });
-
   }
 
   return(
